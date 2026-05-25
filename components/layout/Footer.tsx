@@ -25,7 +25,7 @@ export default function Footer() {
               Generate from prompts, evolve schemas conversationally, share frozen previews.
             </p>
             <div className="flex flex-wrap gap-2 mt-5">
-              <span className="badge badge-primary">Next.js 15</span>
+              <span className="badge badge-primary">Next.js</span>
               <span className="badge badge-teal">Prisma</span>
             </div>
           </div>
