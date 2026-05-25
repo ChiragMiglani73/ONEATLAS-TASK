@@ -108,4 +108,3 @@ curl http://localhost:3000/api/preview/TOKEN
 /types/app.ts → shared frontend/backend contract
 /components   → SchemaRenderer (builder + preview), marketing UI
 ```
-# ONEATLAS-TASK

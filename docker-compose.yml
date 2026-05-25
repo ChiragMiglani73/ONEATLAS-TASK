@@ -1,0 +1,27 @@
+# Local PostgreSQL only — optional alternative to Neon for development.
+#
+# Use when you want Postgres on your machine without a Neon account:
+#   1. docker compose up -d
+#   2. Set in .env:
+#        DATABASE_URL="postgresql://postgres:postgres@localhost:5432/oneatlas?schema=public"
+#        DIRECT_URL="postgresql://postgres:postgres@localhost:5432/oneatlas?schema=public"
+#   3. npm run db:push && npm run dev
+#
+# For production / Vercel submission, use Neon instead (see DEPLOY.md).
+# SQLite is not used when prisma/schema.prisma provider is postgresql.
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: oneatlas
+    volumes:
+      - oneatlas_pg_data:/var/lib/postgresql/data
+
+volumes:
+  oneatlas_pg_data:

@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model App {
+  id         String     @id @default(cuid())
+  name       String
+  templateId String
+  schema     String
+  version    Int        @default(1)
+
+  mutations  Mutation[]
+  previews   Preview[]
+
+  createdAt  DateTime   @default(now())
+}
+
+model Mutation {
+  id           String   @id @default(cuid())
+  appId        String
+  instruction  String
+  result       String
+  version      Int
+  schemaAfter  String
+
+  createdAt    DateTime @default(now())
+
+  app App @relation(fields: [appId], references: [id], onDelete: Cascade)
+}
+
+model Preview {
+  id        String    @id @default(cuid())
+  token     String    @unique
+  appId     String
+  snapshot  String
+  expiresAt DateTime?
+
+  createdAt DateTime  @default(now())
+
+  app App @relation(fields: [appId], references: [id], onDelete: Cascade)
+}

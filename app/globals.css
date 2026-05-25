@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary: #635bff;
+  --primary-light: #7a73ff;
+  --primary-dark: #0a2540;
+  --navy: #1a1f36;
+  --accent-pink: #ff5996;
+  --accent-orange: #ffb17a;
+  --accent-teal: #00d4b1;
+  --accent-cyan: #00d4ff;
+  --accent-yellow: #f8bc42;
+  --text-head: #0a2540;
+  --text-body: #425466;
+  --text-muted: #697386;
+  --bg-page: #fafbff;
+  --bg-card: #ffffff;
+  --bg-subtle: #f6f9fc;
+  --bg-subtle2: #eff3f8;
+  --border: #e3e8ee;
+  --border-light: #edf1f6;
+  --shadow-card: 0 1px 3px rgba(10, 37, 64, 0.06), 0 4px 16px rgba(10, 37, 64, 0.08);
+  --shadow-hover: 0 4px 24px rgba(99, 91, 255, 0.14);
+  --grad: linear-gradient(135deg, #635bff 0%, #7a73ff 50%, #00d4ff 100%);
+}
+
+@layer base {
+  body {
+    font-family: Inter, system-ui, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-body);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: var(--bg-card);
+    color: var(--text-head);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-weight: 500;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    background: var(--bg-subtle);
+    border-color: var(--primary-light);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-primary {
+    background: #635bff14;
+    color: var(--primary);
+  }
+
+  .badge-teal {
+    background: #00d4b118;
+    color: #00a37a;
+  }
+
+  .badge-pink {
+    background: #ff599618;
+    color: var(--accent-pink);
+  }
+
+  .text-gradient {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
